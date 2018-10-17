@@ -1,0 +1,32 @@
+{
+  "name": "rt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode development ./src/js/app.js --output ./dist/js/bundle.js",
+    "dev": "webpack --mode production ./src/js/app.js --output ./dist/js/bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SaiBalaji202/rt.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SaiBalaji202/rt/issues"
+  },
+  "homepage": "https://github.com/SaiBalaji202/rt#readme",
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "babel-loader": "^8.0.4",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {
+    "xml2js": "^0.4.19"
+  }
+}
