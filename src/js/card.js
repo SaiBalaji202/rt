@@ -1,6 +1,9 @@
 import {
     cards
 } from './res_global_declaration';
+import {
+    getJSONData
+} from './utils';
 
 let createCard = (header, rankPercentage, isTotQuery) => {
     let card = document.createElement('div');
@@ -10,6 +13,7 @@ let createCard = (header, rankPercentage, isTotQuery) => {
         card.appendChild(addCircularProgressBar(rankPercentage));
     else
         card.appendChild(addQueryValueToCPB(rankPercentage));
+    card.addEventListener('click', cardClick);
     cards.appendChild(card);
 };
 
@@ -82,6 +86,13 @@ let addCircularProgressBar = (percentageValue) => {
     return progress;
 };
 
+let cardClick = (e) => {
+    let selectedCardName = e.target.children[0].text.toLowerCase();
+    let resultObj = getJSONData('result');
+    let queries = resultObj[selectedCardName].queries;
+    console.log(queries);    
+};
+
 export {
-    createCard, createCardHeader, addQueryValueToCPB, addCircularProgressBar
+    createCard, createCardHeader, addQueryValueToCPB, addCircularProgressBar, cardClick
 };

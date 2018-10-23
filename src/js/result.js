@@ -1,5 +1,5 @@
 import {navMenu, navMenus, backdrop} from './global_declaration'
-import { iterateOverData, loadResult } from "./processResult";
+import { iterateOverData, loadResult } from "./process_result";
 
 let totalQueries = iterateOverData(loadResult());
 
