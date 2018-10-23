@@ -13,21 +13,27 @@ let getTotalQueries = obj => obj['queries'].count;
 
 let iterateOverData = (obj) => {
     totalQueries = getTotalQueries(obj);
+    // console.log(obj);
     for (let doc in obj) {
         if (doc.toUpperCase() !== 'QUERIES') {
             let cntQueries = obj[doc].count;
             console.log(doc.toUpperCase());
             console.log(getPercentage(totalQueries - cntQueries, totalQueries));
-            createCard(doc, getPercentage(totalQueries - cntQueries, totalQueries));
-        } 
+            createCard(doc, getPercentage(totalQueries - cntQueries, totalQueries, false));
+        } else {
+            createCard(doc, obj[doc].count, true);
+        }
     }
 }
 
-let createCard = (header, rankPercentage) => {
+let createCard = (header, rankPercentage, isTotQuery) => {
   let card = document.createElement('div');
   card.setAttribute('class', 'card');
   card.appendChild(createCardHeader(header));
-  card.appendChild(addCircularProgressBar(rankPercentage));
+  if(!isTotQuery)
+    card.appendChild(addCircularProgressBar(rankPercentage));
+  else
+    card.appendChild(addQueryValueToCPB(rankPercentage));
   cards.appendChild(card);
 };
 
@@ -38,6 +44,31 @@ let createCardHeader = (headerText) => {
   return cardHeader;
 }
 
+let addQueryValueToCPB = (queryCount) => {
+    let progress = document.createElement('div');
+    progress.classList.add('c100');
+    // console.log(`p${percentageValue}`);
+    progress.classList.add('p100');
+    progress.classList.add('green');
+    
+    let progressSpan = document.createElement('span');
+    let progressText = document.createTextNode(`${queryCount}Q`);
+    progressSpan.appendChild(progressText);
+    
+    let progressSlice = document.createElement('div');
+    progressSlice.setAttribute('class', 'slice');
+    let progressBar = document.createElement('div');
+    progressBar.setAttribute('class', 'bar');
+    let progressFill = document.createElement('div');
+    progressFill.setAttribute('class', 'fill');
+    
+    progressSlice.appendChild(progressBar);
+    progressSlice.appendChild(progressFill);    
+    
+    progress.appendChild(progressSpan);
+    progress.appendChild(progressSlice);
+    return progress;
+};
 
 let addCircularProgressBar = (percentageValue) => {
     let progress = document.createElement('div');
@@ -81,12 +112,9 @@ iterateOverData(loadResult());
 
 
 navMenu.addEventListener('click', () => {
-    alert('Clicked');
-    if (!navMenus.style.display || navMenus.style.display === "none") {
+    // alert('Clicked');
+    
         backdrop.style.display = "block";
         navMenus.style.display = "flex";            
-    } else {
-        backdrop.style.display = "none";
-        navMenus.style.display = "none";
-    }    
+    
 });
