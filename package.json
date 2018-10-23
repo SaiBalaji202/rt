@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode development ./src/js/app.js --output ./dist/js/bundle.js",
-    "dev": "webpack --mode production ./src/js/app.js --output ./dist/js/bundle.js"
+    "build-app": "webpack --mode development ./src/js/app.js --output ./dist/js/app-bundle.js",
+    "dev-app": "webpack --mode production ./src/js/app.js --output ./dist/js/app-bundle.js",
+    "build-res": "webpack --mode development ./src/js/result.js --output ./dist/js/result-bundle.js",
+    "dev-res": "webpack --mode production ./src/js/result.js --output ./dist/js/result-bundle.js"
   },
   "repository": {
     "type": "git",
