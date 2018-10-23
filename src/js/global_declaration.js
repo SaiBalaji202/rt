@@ -14,7 +14,7 @@ let fileTest = document.querySelector('.file-input-test');
 let fileInput = document.querySelector('#file-input-file');
 let fileNameTxt = document.querySelector('#file-input-name');
 
-let spinner = document.querySelector('.spinner');
+let spinner = document.querySelector('.page-spinner');
 
 let winResize = () => {
     if (window.innerWidth > 600) {
