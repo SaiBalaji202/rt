@@ -1,7 +1,5 @@
-import {navMenus, navMenu, modalWindow, backdrop} from './app_global_declaration.js';
+import {navMenus, modalWindow, backdrop} from './app_global_declaration.js';
 import {closeModal} from './modal.js';
-
-
 
 let navMenuClick = () => {
     if (!navMenus.style.display || navMenus.style.display === "none") {

@@ -1,4 +1,6 @@
 import {cards} from './res_global_declaration.js';
+import {navMenu, navMenus, backdrop} from './global_declaration.js'
+
 import {getJSONData} from './utils.js'
 
 let totalQueries = 0;
@@ -77,10 +79,14 @@ let getPercentage = (x, y) => Math.round(x / y * 100);
 
 iterateOverData(loadResult());
 
-// <div class="c100 p80 orange dark small">
-//   <span>100%</span>
-//       <div class="slice">
-//          <div class="bar"></div>
-//           <div class="fill"></div>
-//       </div>
-// </div>
+
+navMenu.addEventListener('click', () => {
+    alert('Clicked');
+    if (!navMenus.style.display || navMenus.style.display === "none") {
+        backdrop.style.display = "block";
+        navMenus.style.display = "flex";            
+    } else {
+        backdrop.style.display = "none";
+        navMenus.style.display = "none";
+    }    
+});

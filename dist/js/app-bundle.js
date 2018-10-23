@@ -763,11 +763,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*!**************************************!*\
   !*** ./src/js/global_declaration.js ***!
   \**************************************/
-/*! exports provided: localStoragePrefix, resultPage */
+/*! exports provided: localStoragePrefix, resultPage, navMenus, navMenu, nm, backdrop */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"localStoragePrefix\", function() { return localStoragePrefix; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"resultPage\", function() { return resultPage; });\nvar resultPage = 'result.html';\nvar localStoragePrefix = 'rt';\n\n\n//# sourceURL=webpack:///./src/js/global_declaration.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"localStoragePrefix\", function() { return localStoragePrefix; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"resultPage\", function() { return resultPage; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"navMenus\", function() { return navMenus; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"navMenu\", function() { return navMenu; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"nm\", function() { return nm; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"backdrop\", function() { return backdrop; });\nvar navMenus = document.querySelector('.nav-menus');\nvar navMenu = document.querySelector('.nav-menu');\nvar nm = document.querySelector('#nav-menu-icon');\nvar backdrop = document.querySelector('.backdrop');\nvar resultPage = 'result.html';\nvar localStoragePrefix = 'rt';\n\n\n//# sourceURL=webpack:///./src/js/global_declaration.js?");
 
 /***/ }),
 
