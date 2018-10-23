@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+body {
+  margin: 0;
+}
+
 .main-area {
     /*background-image: linear-gradient(to top right, #fcd04b, #cd9b03);*/
     background-color: #fff;
@@ -55,13 +59,21 @@
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 182px;
   width: 176px;
   background: #F48024;
   margin: 10px 2px;
   box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, .5);
   border-radius: 6px;
-  
+}
+
+.card h4 {
+  letter-spacing: 0;
+  margin: auto;
 }
 
 @keyframes move {

@@ -98,6 +98,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 /***/ }),
 
+/***/ "./src/js/res_global_declaration.js":
+/*!******************************************!*\
+  !*** ./src/js/res_global_declaration.js ***!
+  \******************************************/
+/*! exports provided: cards */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"cards\", function() { return cards; });\nvar cards = document.querySelector('.cards');\n\n\n//# sourceURL=webpack:///./src/js/res_global_declaration.js?");
+
+/***/ }),
+
 /***/ "./src/js/result.js":
 /*!**************************!*\
   !*** ./src/js/result.js ***!
@@ -106,7 +118,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils.js */ \"./src/js/utils.js\");\n\n\nvar loadResult = function loadResult() {\n  var data = Object(_utils_js__WEBPACK_IMPORTED_MODULE_0__[\"getJSONData\"])('result');\n  console.log(data);\n};\n\nloadResult();\n\n//# sourceURL=webpack:///./src/js/result.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _res_global_declaration_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./res_global_declaration.js */ \"./src/js/res_global_declaration.js\");\n/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils.js */ \"./src/js/utils.js\");\n\n\nvar totalQueries = 0;\n\nvar loadResult = function loadResult() {\n  return Object(_utils_js__WEBPACK_IMPORTED_MODULE_1__[\"getJSONData\"])('result');\n};\n\nvar getTotalQueries = function getTotalQueries(obj) {\n  return obj['queries'].count;\n};\n\nvar iterateOverData = function iterateOverData(obj) {\n  totalQueries = getTotalQueries(obj);\n\n  for (var doc in obj) {\n    if (doc.toUpperCase() !== 'QUERIES') {\n      var cntQueries = obj[doc].count;\n      console.log(doc.toUpperCase());\n      console.log(getPercentage(totalQueries - cntQueries, totalQueries));\n      createCard(doc, getPercentage(totalQueries - cntQueries, totalQueries));\n    }\n  }\n};\n\nvar createCard = function createCard(header, rankPercentage) {\n  var card = document.createElement('div');\n  card.setAttribute('class', 'card');\n  card.appendChild(createCardHeader(header));\n  card.appendChild(addCircularProgressBar(rankPercentage));\n  _res_global_declaration_js__WEBPACK_IMPORTED_MODULE_0__[\"cards\"].appendChild(card);\n};\n\nvar createCardHeader = function createCardHeader(headerText) {\n  var cardHeader = document.createElement('h4');\n  var cardHeaderText = document.createTextNode(headerText.toUpperCase());\n  cardHeader.appendChild(cardHeaderText);\n  return cardHeader;\n};\n\nvar addCircularProgressBar = function addCircularProgressBar(percentageValue) {\n  var progress = document.createElement('div');\n  progress.classList.add('c100'); // console.log(`p${percentageValue}`);\n\n  progress.classList.add(\"p\".concat(percentageValue));\n  if (percentageValue >= 80) progress.classList.add('green');else if (percentageValue >= 50) progress.classList.add('orange');else if (percentageValue >= 10) progress.classList.add('red');else {\n    progress.classList.add('red');\n    progress.classList.add('dark');\n  }\n  var progressSpan = document.createElement('span');\n  var progressText = document.createTextNode(\"\".concat(percentageValue, \"%\"));\n  progressSpan.appendChild(progressText);\n  var progressSlice = document.createElement('div');\n  progressSlice.setAttribute('class', 'slice');\n  var progressBar = document.createElement('div');\n  progressBar.setAttribute('class', 'bar');\n  var progressFill = document.createElement('div');\n  progressFill.setAttribute('class', 'fill');\n  progressSlice.appendChild(progressBar);\n  progressSlice.appendChild(progressFill);\n  progress.appendChild(progressSpan);\n  progress.appendChild(progressSlice);\n  return progress;\n};\n\nvar getPercentage = function getPercentage(x, y) {\n  return Math.round(x / y * 100);\n};\n\niterateOverData(loadResult()); // <div class=\"c100 p80 orange dark small\">\n//   <span>100%</span>\n//       <div class=\"slice\">\n//          <div class=\"bar\"></div>\n//           <div class=\"fill\"></div>\n//       </div>\n// </div>\n\n//# sourceURL=webpack:///./src/js/result.js?");
 
 /***/ }),
 

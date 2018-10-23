@@ -44,7 +44,7 @@ let convertToJSONFile = (e) => {
                        count: countQueries(), 
                        queries: arrQueries
                     },
-                    invalidQueries: {
+                    'invalid Queries': {
                         count: countInvalidQueries(), 
                         queries: arrInvalidQueries
                     }, 
