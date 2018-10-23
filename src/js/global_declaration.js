@@ -16,6 +16,8 @@ let fileNameTxt = document.querySelector('#file-input-name');
 
 let spinner = document.querySelector('.page-spinner');
 
+let resultPage = 'result.html';
+
 let winResize = () => {
     if (window.innerWidth > 600) {
         navMenus.style.display = "flex";
@@ -34,5 +36,5 @@ let winClick = (e) => {
 
 
 export {
-    modalWindow, modalClose, modalOpen, navMenus, navMenu, nm, backdrop, fileTest, fileInput, fileNameTxt, winResize, winClick, spinner, parseString
+    resultPage, modalWindow, modalClose, modalOpen, navMenus, navMenu, nm, backdrop, fileTest, fileInput, fileNameTxt, winResize, winClick, spinner, parseString
 }

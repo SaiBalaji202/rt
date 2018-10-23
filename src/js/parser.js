@@ -1,6 +1,8 @@
 import {fileNameTxt} from './global_declaration.js';
 import {parseString} from './global_declaration.js';
+import {resultPage} from './global_declaration.js';
 import {showSpinner, hideSpinner} from './spinner.js';
+import {redirect} from './redirect.js';
 
 
 let strXMLFileContent = '';
@@ -21,7 +23,7 @@ let loadSpinnerAndInit = (e) => {
     showSpinner();
     setTimeout(() => {
         hideSpinner();
-        convertToJSONFile();
+        redirect(resultPage);
     }, 3000);
 }
 
