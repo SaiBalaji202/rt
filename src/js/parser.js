@@ -1,6 +1,6 @@
 import {fileNameTxt} from './global_declaration.js';
 import {parseString} from './global_declaration.js';
-import {displayBackdrop, showSpinner} from './spinner.js';
+import {showSpinner, hideSpinner} from './spinner.js';
 
 
 let strXMLFileContent = '';
@@ -17,26 +17,32 @@ let readXMLFile = (e) => {
   fileReader.readAsText(e.target.files[0], "UTF-8");
 };
 
-let convertToJSONFile = (e) => {
-    displayBackdrop();
+let loadSpinnerAndInit = (e) => {
     showSpinner();
-    // if (strXMLFileContent) {
-    //   parseString(strXMLFileContent, (err, json) => {
-    //       if (err) {
-    //           alert(err);
-    //       } else {
-    //             strJSONFileContent = json;
-    //             console.log(strJSONFileContent);  
-    //             console.log(`No of Unions: ${countUnion()}`);
-    //             console.log(`Invalid Query Count: ${checkQryNamingConv()}`);
-    //             console.log(arrInvalidQueries);
-    //             console.log(`No of Joins: ${countJoin()}`);
-    //             console.log(arrJoinQueries);
-    //       }
-    //   });  
-    // } else {
-    //     alert('First Upload, then Test');
-    // }
+    setTimeout(() => {
+        hideSpinner();
+        convertToJSONFile();
+    }, 3000);
+}
+
+let convertToJSONFile = (e) => {
+    if (strXMLFileContent) {
+      parseString(strXMLFileContent, (err, json) => {
+          if (err) {
+              alert(err);
+          } else {
+                strJSONFileContent = json;
+                console.log(strJSONFileContent);  
+                console.log(`No of Unions: ${countUnion()}`);
+                console.log(`Invalid Query Count: ${checkQryNamingConv()}`);
+                console.log(arrInvalidQueries);
+                console.log(`No of Joins: ${countJoin()}`);
+                console.log(arrJoinQueries);
+          }
+      });  
+    } else {
+        alert('First Upload, then Test');
+    }
 };
 
 let countUnion = () => {
@@ -84,7 +90,8 @@ let checkQryNamingConv = () => {
 
 export {
     readXMLFile, 
-    convertToJSONFile, 
+    loadSpinnerAndInit, 
+    // convertToJSONFile, 
     countUnion, 
     countJoin, 
     checkQryNamingConv
