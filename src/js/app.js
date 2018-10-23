@@ -1,8 +1,8 @@
-import {backdrop, navMenu, modalOpen, modalClose, fileInput, fileTest} from './app_global_declaration.js';
-import {winClick, winResize} from  './app_global_declaration.js';
-import {openModal, closeModal} from './modal.js';
-import {navMenuClick} from './nav.js';
-import {readXMLFile, loadSpinnerAndInit} from './parser.js';
+import {backdrop, navMenu, modalOpen, modalClose, fileInput, fileTest} from './app_global_declaration';
+import {winClick, winResize} from  './app_global_declaration';
+import {openModal, closeModal} from './modal';
+import {navMenuClick} from './nav';
+import {readXMLFile, loadSpinnerAndInit} from './parser';
 
 // Event Listners
 window.addEventListener("click", winClick);

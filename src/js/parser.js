@@ -1,9 +1,9 @@
-import {fileNameTxt} from './app_global_declaration.js';
-import {parseString} from './app_global_declaration.js';
-import {resultPage} from './global_declaration.js';
-import {showSpinner, hideSpinner} from './spinner.js';
-import {redirect} from './redirect.js';
-import {saveJSONData} from './utils.js';
+import {fileNameTxt} from './app_global_declaration';
+import {parseString} from './app_global_declaration';
+import {resultPage} from './global_declaration';
+import {showSpinner, hideSpinner} from './spinner';
+import {redirect} from './redirect';
+import {saveJSONData} from './utils';
 
 
 let strXMLFileContent = '';
