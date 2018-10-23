@@ -86,14 +86,39 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/js/global_declaration.js":
+/*!**************************************!*\
+  !*** ./src/js/global_declaration.js ***!
+  \**************************************/
+/*! exports provided: localStoragePrefix, resultPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"localStoragePrefix\", function() { return localStoragePrefix; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"resultPage\", function() { return resultPage; });\nvar resultPage = 'result.html';\nvar localStoragePrefix = 'rt';\n\n\n//# sourceURL=webpack:///./src/js/global_declaration.js?");
+
+/***/ }),
+
 /***/ "./src/js/result.js":
 /*!**************************!*\
   !*** ./src/js/result.js ***!
   \**************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("\n\n//# sourceURL=webpack:///./src/js/result.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils.js */ \"./src/js/utils.js\");\n\n\nvar loadResult = function loadResult() {\n  var data = Object(_utils_js__WEBPACK_IMPORTED_MODULE_0__[\"getJSONData\"])('result');\n  console.log(data);\n};\n\nloadResult();\n\n//# sourceURL=webpack:///./src/js/result.js?");
+
+/***/ }),
+
+/***/ "./src/js/utils.js":
+/*!*************************!*\
+  !*** ./src/js/utils.js ***!
+  \*************************/
+/*! exports provided: saveJSONData, saveData, getJSONData, getData */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"saveJSONData\", function() { return saveJSONData; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"saveData\", function() { return saveData; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getJSONData\", function() { return getJSONData; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getData\", function() { return getData; });\n/* harmony import */ var _global_declaration_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./global_declaration.js */ \"./src/js/global_declaration.js\");\n\n\nvar saveJSONData = function saveJSONData(key, value) {\n  return window.localStorage.setItem(_global_declaration_js__WEBPACK_IMPORTED_MODULE_0__[\"localStoragePrefix\"] + key.charAt(0).toUpperCase() + key.substr(1), JSON.stringify(value));\n};\n\nvar saveData = function saveData(key, value) {\n  return window.localStorage.setItem(_global_declaration_js__WEBPACK_IMPORTED_MODULE_0__[\"localStoragePrefix\"] + key.charAt(0).toUpperCase() + key.substr(1), value);\n};\n\nvar getJSONData = function getJSONData(key) {\n  return JSON.parse(window.localStorage.getItem(_global_declaration_js__WEBPACK_IMPORTED_MODULE_0__[\"localStoragePrefix\"] + key.charAt(0).toUpperCase() + key.substr(1)));\n};\n\nvar getData = function getData(key) {\n  return window.localStorage.setItem(_global_declaration_js__WEBPACK_IMPORTED_MODULE_0__[\"localStoragePrefix\"] + key.charAt(0).toUpperCase() + key.substr(1));\n};\n\n // queries.forEach((query) => {\n//     if(query.source[0].hasOwnProperty('queryOperation')) {\n//         if(query.source[0].queryOperation.hasOwnProperty('setOperation')) {\n//             if (query.source[0].queryOperation.setOperation.trim() === 'UNION') {\n//                 ++cnt;\n//                 arrUnionQueries.push(query.$.name);\n//             }\n//         }\n//     }\n// });\n\n//# sourceURL=webpack:///./src/js/utils.js?");
 
 /***/ })
 

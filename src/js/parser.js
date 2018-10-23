@@ -1,14 +1,18 @@
 import {fileNameTxt} from './app_global_declaration.js';
 import {parseString} from './app_global_declaration.js';
-import {resultPage} from './app_global_declaration.js';
+import {resultPage} from './global_declaration.js';
 import {showSpinner, hideSpinner} from './spinner.js';
 import {redirect} from './redirect.js';
+import {saveJSONData} from './utils.js';
 
 
 let strXMLFileContent = '';
 let strJSONFileContent = '';
+let arrQueries = [];
 let arrInvalidQueries = [];
+let arrUnionQueries = [];
 let arrJoinQueries = [];
+
 
 let readXMLFile = (e) => {
     fileNameTxt.value = e.target.files[0].name;
@@ -23,6 +27,7 @@ let loadSpinnerAndInit = (e) => {
     showSpinner();
     setTimeout(() => {
         hideSpinner();
+        convertToJSONFile();
         redirect(resultPage);
     }, 3000);
 }
@@ -34,12 +39,25 @@ let convertToJSONFile = (e) => {
               alert(err);
           } else {
                 strJSONFileContent = json;
-                console.log(strJSONFileContent);  
-                console.log(`No of Unions: ${countUnion()}`);
-                console.log(`Invalid Query Count: ${checkQryNamingConv()}`);
-                console.log(arrInvalidQueries);
-                console.log(`No of Joins: ${countJoin()}`);
-                console.log(arrJoinQueries);
+                let result = {
+                    queries: {
+                       count: countQueries(), 
+                       queries: arrQueries
+                    },
+                    invalidQueries: {
+                        count: countInvalidQueries(), 
+                        queries: arrInvalidQueries
+                    }, 
+                    union: {
+                        count: countUnion(), 
+                        queries: arrUnionQueries
+                    }, 
+                    join: {
+                        count: countJoin(), 
+                        queries: arrJoinQueries
+                    }
+                };
+                saveJSONData('result', result);
           }
       });  
     } else {
@@ -48,25 +66,27 @@ let convertToJSONFile = (e) => {
 };
 
 let countUnion = () => {
+    arrUnionQueries = [];
+    
     let cnt = 0;
     var queries = strJSONFileContent.report.queries[0].query;
-    for (var i = 0; i < queries.length; i++) {
-        if(queries[i].source[0].hasOwnProperty('queryOperation')) {
-            var query = queries[i].source[0].queryOperation;
-            if(query[0].$.hasOwnProperty('setOperation')) {
-                if (query[0].$.setOperation.trim() === 'UNION') {
-                    ++cnt;
-                }
-            }
+    
+    queries.forEach((query) => {
+        // console.log(query);
+        if(query.source[0].hasOwnProperty('queryOperation') && query.source[0].queryOperation[0].$.hasOwnProperty('setOperation') && query.source[0].queryOperation[0].$.setOperation.trim().toUpperCase() === 'UNION') {
+            ++cnt;
+            arrUnionQueries.push(query.$.name);
         }
-        
-    }
+    });
     return cnt;
 }
 
 let countJoin = () => {
-     var queries = strJSONFileContent.report.queries[0].query;
+     arrJoinQueries = [];
+    
      let cnt = 0;
+     var queries = strJSONFileContent.report.queries[0].query;
+     
      queries.forEach((query) => {
         if(query.source[0].hasOwnProperty('joinOperation')) {
             ++cnt;
@@ -76,9 +96,23 @@ let countJoin = () => {
     return cnt;
 }
 
-let checkQryNamingConv = () => {
+let countQueries = () => {
+    arrQueries = [];
     let cnt = 0;
     var queries = strJSONFileContent.report.queries[0].query;
+    
+    queries.forEach((query) => {
+        ++cnt;
+        arrQueries.push(query.$.name);
+    });
+    return cnt;
+}
+
+let countInvalidQueries = () => {
+    arrInvalidQueries = [];
+    let cnt = 0;
+    var queries = strJSONFileContent.report.queries[0].query;
+    
     queries.forEach((query) => {
         const regex = /^[q|Q]ry_/gm;
         const str = query.$.name;
@@ -92,9 +126,5 @@ let checkQryNamingConv = () => {
 
 export {
     readXMLFile, 
-    loadSpinnerAndInit, 
-    // convertToJSONFile, 
-    countUnion, 
-    countJoin, 
-    checkQryNamingConv
+    loadSpinnerAndInit
 };
