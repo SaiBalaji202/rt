@@ -1,4 +1,4 @@
-import {navMenus, navMenu, modalWindow, backdrop} from './global_declaration.js';
+import {navMenus, navMenu, modalWindow, backdrop} from './app_global_declaration.js';
 import {closeModal} from './modal.js';
 
 

@@ -1,4 +1,4 @@
-import {modalWindow, modalOpen, modalClose, backdrop} from './global_declaration.js';
+import {modalWindow, modalOpen, modalClose, backdrop} from './app_global_declaration.js';
 
 // open and close modal
 let closeModal = () => {

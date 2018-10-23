@@ -1,5 +1,5 @@
-import {backdrop, navMenu, modalOpen, modalClose, fileInput, fileTest} from './global_declaration.js';
-import {winClick, winResize} from  './global_declaration.js';
+import {backdrop, navMenu, modalOpen, modalClose, fileInput, fileTest} from './app_global_declaration.js';
+import {winClick, winResize} from  './app_global_declaration.js';
 import {openModal, closeModal} from './modal.js';
 import {navMenuClick} from './nav.js';
 import {readXMLFile, loadSpinnerAndInit} from './parser.js';
