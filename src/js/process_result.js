@@ -15,9 +15,7 @@ let iterateOverData = (obj) => {
     for (let doc in obj) {
         if (doc.toUpperCase() !== 'QUERIES') {
             let cntQueries = obj[doc].count;
-            console.log(doc.toUpperCase());
-            console.log(getPercentage(totalQueries - cntQueries, totalQueries));
-            createCard(doc, getPercentage(totalQueries - cntQueries, totalQueries, false));
+            createCard(doc, getPercentage(cntQueries, totalQueries, false));
         } else {
             createCard(doc, obj[doc].count, true);
         }

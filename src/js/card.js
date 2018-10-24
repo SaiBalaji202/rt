@@ -10,7 +10,8 @@ import {
     fillHeader, 
     clearHeader, 
     fillBody, 
-    clearBody
+    clearBody, 
+    centerModal
 } from './result_modal';
 
 let createCard = (header, rankPercentage, isTotQuery) => {
@@ -63,18 +64,16 @@ let addCircularProgressBar = (percentageValue) => {
     let progress = document.createElement('div');
     progress.classList.add('c100');
     // console.log(`p${percentageValue}`);
-    progress.classList.add(`p${percentageValue}`);
+    progress.classList.add(`p${100 - percentageValue}`);
 
-    if (percentageValue >= 80)
-        progress.classList.add('green');
-    else if (percentageValue >= 50)
-        progress.classList.add('orange');
-    else if (percentageValue >= 10)
-        progress.classList.add('red');
-    else {
+    if (percentageValue >= 80){
         progress.classList.add('red');
         progress.classList.add('dark');
     }
+    else if (percentageValue >= 40)
+        progress.classList.add('orange');
+    else
+        progress.classList.add('green');
 
     let progressSpan = document.createElement('span');
     let progressText = document.createTextNode(`${percentageValue}%`);
@@ -114,7 +113,7 @@ let cardClick = (e) => {
     clearBody();
     fillBody(queries);
     showModal();
-    
+    centerModal();
     // console.log(queries);    
 };
 

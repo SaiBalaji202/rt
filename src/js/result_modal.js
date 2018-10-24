@@ -1,11 +1,12 @@
 import {
     modal, 
     modalHeader, 
-    modalBody, 
-    modalFooter, 
-    backdrop
+    modalBody
 } from './res_global_declaration';
 
+import {
+    backdrop
+} from './global_declaration';
 
 let showModal = () =>  {
     backdrop.style.display = 'block';
@@ -14,19 +15,26 @@ let showModal = () =>  {
     modal.style.zIndex = 3;
     backdrop.style.top = 0;
 }
+
+
 let hideModal = () => {
-    backdrop.style.display = "none";
-    modal.style.display = "none";
+    modal.style.display = 'none';
+    backdrop.style.display = 'none';
+    backdrop.style.zIndex = 1;
+    backdrop.style.top = "50px";
 }
 
 let fillHeader = headerText => {
-    
     let closeBtn = document.createElement('span');
     closeBtn.classList.add('closeBtn');
     closeBtn.textContent = 'x';
+    closeBtn.addEventListener('click', () => {
+        hideModal();
+    });
     
     let h5 = document.createElement('h5');
     h5.textContent = headerText.toUpperCase();
+    h5.style.display='inline-block';
     modalHeader.appendChild(h5);
     modalHeader.appendChild(closeBtn);
 }
@@ -39,11 +47,19 @@ let fillBody = queries => {
      li.textContent = query;
      ul.appendChild(li);
     });
+    modalBody.style.overflowY = 'auto';
     modalBody.appendChild(ul);
 };
 let clearBody = () => {
     modalBody.innerHTML = '';
 };
+
+let centerModal = () => {
+    modal.style.top = "50%";
+    modal.style.left = "50%";
+    modal.style.marginTop = `-${modal.offsetHeight / 2}px`;
+    modal.style.marginLeft = `-${modal.offsetWidth / 2}px`;
+}
 
 export {
     showModal, 
@@ -51,5 +67,6 @@ export {
     fillHeader, 
     clearHeader, 
     fillBody, 
-    clearBody
+    clearBody, 
+    centerModal
 };

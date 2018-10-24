@@ -196,6 +196,7 @@ header .nav-menus .nav-right li:nth-child(odd):hover a {
   display: none;
   position: fixed;
   z-index: 3;
+  width: 500px;
   margin: auto;
   background-color: #fff;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 #0000002b;
