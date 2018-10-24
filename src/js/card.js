@@ -87,7 +87,11 @@ let addCircularProgressBar = (percentageValue) => {
 };
 
 let cardClick = (e) => {
-    let selectedCardName = e.target.children[0].text.toLowerCase();
+    console.log(e.target);
+    console.log(e.target.children);
+    console.log(e.target.children[0].textContent);
+    event.stopPropagation();
+    let selectedCardName = e.target.children[0].textContent.toLowerCase();
     let resultObj = getJSONData('result');
     let queries = resultObj[selectedCardName].queries;
     console.log(queries);    
