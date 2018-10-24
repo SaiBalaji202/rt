@@ -11,6 +11,7 @@ import {
 let showModal = () =>  {
     backdrop.style.display = 'block';
     modal.style.display = 'block';
+    modal.style.animation = 'slide-down 1s ease-in-out';
     backdrop.style.zIndex = 2;
     modal.style.zIndex = 3;
     backdrop.style.top = 0;

@@ -100,6 +100,18 @@ body {
   }
 }
 
+@keyframes slide-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+  
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .card:hover {
   transition: all 1s;
   animation: move 2s ease-in infinite;
