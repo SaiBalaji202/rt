@@ -21,6 +21,7 @@ let createCardHeader = (headerText) => {
     let cardHeader = document.createElement('h4');
     let cardHeaderText = document.createTextNode(headerText.toUpperCase());
     cardHeader.appendChild(cardHeaderText);
+    cardHeader.addEventListener('click', headerClick);
     return cardHeader;
 }
 
@@ -87,11 +88,24 @@ let addCircularProgressBar = (percentageValue) => {
 };
 
 let cardClick = (e) => {
-    let selectedCardName = e.target.children[0].text.toLowerCase();
+    e.stopPropagation();
+    alert(e.target.className);
+    
+    let card = e.target;
+    while(!card.classList.contains('card')) {
+        card = card.parentElement; 
+    }
+
+    console.log(card.children[0].textContent);
+    let selectedCardName = card.children[0].textContent.toLowerCase();
     let resultObj = getJSONData('result');
     let queries = resultObj[selectedCardName].queries;
     console.log(queries);    
 };
+
+let headerClick = (e) => {
+    alert('Header Clicked');
+}
 
 export {
     createCard, createCardHeader, addQueryValueToCPB, addCircularProgressBar, cardClick
