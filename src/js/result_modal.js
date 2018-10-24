@@ -43,11 +43,17 @@ let clearHeader = () => modalHeader.innerHTML = '';
 
 let fillBody = queries => {
     let ul = document.createElement('ul');
-    queries.forEach((query) => {
-     let li = document.createElement('li');
-     li.textContent = query;
-     ul.appendChild(li);
-    });
+    if(queries.length > 0) {
+        queries.forEach((query) => {
+             let li = document.createElement('li');
+             li.textContent = query;
+             ul.appendChild(li);
+        });
+    } else {
+        let li = document.createElement('li');
+        li.textContent = 'Nothing to Show';
+        ul.appendChild(li);
+    }
     modalBody.style.overflowY = 'auto';
     modalBody.appendChild(ul);
 };
