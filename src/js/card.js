@@ -4,6 +4,14 @@ import {
 import {
     getJSONData
 } from './utils';
+import {
+    showModal, 
+    hideModal, 
+    fillHeader, 
+    clearHeader, 
+    fillBody, 
+    clearBody
+} from './result_modal';
 
 let createCard = (header, rankPercentage, isTotQuery) => {
     let card = document.createElement('div');
@@ -89,18 +97,25 @@ let addCircularProgressBar = (percentageValue) => {
 
 let cardClick = (e) => {
     e.stopPropagation();
-    alert(e.target.className);
-    
+   
     let card = e.target;
     while(!card.classList.contains('card')) {
         card = card.parentElement; 
     }
 
-    console.log(card.children[0].textContent);
+
     let selectedCardName = card.children[0].textContent.toLowerCase();
     let resultObj = getJSONData('result');
     let queries = resultObj[selectedCardName].queries;
-    console.log(queries);    
+    console.log(queries);
+    
+    clearHeader();
+    fillHeader(card.children[0].textContent);
+    clearBody();
+    fillBody(queries);
+    showModal();
+    
+    // console.log(queries);    
 };
 
 let headerClick = (e) => {
