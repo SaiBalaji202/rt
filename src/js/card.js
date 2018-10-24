@@ -13,7 +13,7 @@ let createCard = (header, rankPercentage, isTotQuery) => {
         card.appendChild(addCircularProgressBar(rankPercentage));
     else
         card.appendChild(addQueryValueToCPB(rankPercentage));
-    card.addEventListener('click', cardClick);
+    card.addEventListener('click', cardClick, true);
     cards.appendChild(card);
 };
 
