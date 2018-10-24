@@ -12,6 +12,7 @@ let arrQueries = [];
 let arrInvalidQueries = [];
 let arrUnionQueries = [];
 let arrJoinQueries = [];
+let arrOuterJoinQueries = [];
 
 
 let readXMLFile = (e) => {
@@ -55,6 +56,10 @@ let convertToJSONFile = (e) => {
                     join: {
                         count: countJoin(), 
                         queries: arrJoinQueries
+                    }, 
+                    'outer join': {
+                        count: countOuterJoin(), 
+                        queries: arrOuterJoinQueries
                     }
                 };
                 saveJSONData('result', result);
@@ -123,6 +128,23 @@ let countInvalidQueries = () => {
     });
     return cnt;
 }
+
+// By GV
+let countOuterJoin = () => {
+    arrOuterJoinQueries = [];
+    let cnt = 0;
+    var queries = strJSONFileContent.report.queries[0].query;
+    
+    queries.forEach((query) => {
+        if(query.source[0].hasOwnProperty('joinOperation')) {
+            if(query.source[0].joinOperation[0].joinOperands[0].joinOperand[0].$.cardinality.includes("0")){
+                arrOuterJoinQueries.push(query.$.name);
+                ++cnt;
+            }
+        }
+    });
+    return cnt;
+};
 
 export {
     readXMLFile, 
