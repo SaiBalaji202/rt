@@ -1,0 +1,203 @@
+@import url("https://fonts.googleapis.com/css?family=Titillium+Web:300,400,600,700");
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+/* Body and Container Style */
+body {
+	background-image: linear-gradient(45deg, #665fee 0%, #27c2de 100%);
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 100vh;	
+	overflow: hidden;
+	font-family: 'Titillium Web', sans-serif;
+}
+
+.container {
+	display: flex;
+	flex-direction: row;
+	position: relative;
+	flex-direction: column;
+	padding: 20px;
+	margin: 20px;
+}
+
+.container:after {
+	content: "";
+	position: absolute;
+	bottom: -360px;
+	left: -25px;
+	transform: rotate(-4deg);
+	background-color: #fff;
+	height: 300px;	
+	width: 130%;
+}
+
+/* Header Style */
+.header {
+	display: flex;
+	justify-content: space-between;
+	background: transparent;	
+	margin-bottom: 30px;
+}
+
+.header .header-text h3 {
+	font-size: 1.8em;
+	font-weight: 500;
+	color: #ddd;
+	text-transform: capitalize;
+	cursor: pointer;
+}
+
+.header .header-nav-items ul {
+	display: flex;
+	justify-content: center;
+}
+
+.header .header-nav-items ul li {
+	list-style: none;	
+	padding-right: 20px;
+	font-size: 1.4em;		
+}
+
+.header .header-nav-items ul li .header-nav-items-link {	
+	text-decoration: none;	
+	color: #eee;
+} 
+
+.header .header-nav-items ul li .header-nav-items-link:hover {
+	border-bottom: 1px solid black;
+} 
+
+/* main-area Style */
+.main-area {
+	display: flex;
+	align-items: stretch;
+}
+
+@media screen and (max-width: 600px) {
+	.main-area {
+		flex-direction: column;
+	}
+}
+
+.about {
+	flex-basis: 70%;
+	padding-right: 100px;
+}
+
+.about .about-header h1 {
+	font-weight: 600;
+	font-size: 4em;
+	text-transform: capitalize;
+	margin-bottom: 10px;
+	color: #ddd;
+}
+
+.about .about-content {	
+	color: #ccc;
+	font-size: 1.8em;
+}
+
+.about .about-content .dummy-btn {
+	text-decoration: none;
+	display: inline-block;
+	top: 0;
+	color: #fff;	
+	text-align: center;
+	background-color: #00a43e;	
+	border-radius: 20px;
+	box-shadow: 0 2px 2px #009739; 
+	padding: 5px 15px;
+	margin-top: 10px;
+	transition: all .5s;
+}
+
+.about .about-content .dummy-btn:hover {
+	transform: scale(1.2);
+}
+
+.input-control {
+	flex-basis: 30%;
+	height: 250px;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: center;
+	margin-top: 40px;
+	padding: 20px 50px;	
+	background-color: #fff;
+	border-radius: 7px;
+	box-shadow: 0 0 6px 2px;
+}
+
+.input-control .input-control-header {
+	margin-bottom: 30px;
+}
+
+@media screen and (max-width: 600px) {
+	.input-control .input-control-header {
+		margin-bottom: 10px;
+	}
+}
+
+.input-control .input-control-header h4 {
+	text-align: center;
+	font-weight: 400;
+	font-size: 2em;
+	letter-spacing: 2px;
+	text-transform: capitalize;
+}
+
+.input-control .input-control-content {
+	display: flex;
+	flex-direction: column;	
+}
+
+.input-control .input-control-content .txt-file-name {
+	padding: 10px;
+	margin-bottom: 20px;
+	outline: none;
+	border-radius: 5px;
+	background-color: #eee;
+	color: #666;
+	font-size: 1.1em;
+}
+
+@media screen and (max-width: 600px) {
+	.input-control .input-control-content .txt-file-name {
+		margin-bottom: 5px;
+	}
+}
+
+.input-control .input-control-content .input-submit-btn {
+	text-align: center;
+	background-color: #1d82ff;	
+	border: 1px solid #1d82ff;
+	border-radius: 20px;
+	box-shadow: 0 10px 5px rgba(29, 130, 255, .2);
+	font-size: 1.5em;
+	letter-spacing: 2px;
+	color: #fff;
+	cursor: pointer;
+	padding: 5px;
+	margin-bottom: 10px;
+	transition: all .4s ;
+}
+
+.input-control .input-control-content .input-submit-btn:hover {
+	transform: scale(1.2);
+}
+
+@media screen and (max-width: 600px) {
+	.input-control .input-control-content .input-submit-btn {
+		margin-bottom: 5px;
+	}
+}
+
+#input-file {
+	display: none;
+}
